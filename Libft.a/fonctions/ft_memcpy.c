@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:40:12 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/01 16:28:20 by thofstet         ###   ########.fr       */
+/*   Created: 2024/10/01 17:24:23 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/01 17:36:38 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
-
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct s_list
+void	*ft_memcpy(void *dest_str, const void *src_str, size_t n)
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
 
-#endif
+}

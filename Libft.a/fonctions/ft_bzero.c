@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 15:40:12 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/01 16:28:20 by thofstet         ###   ########.fr       */
+/*   Created: 2024/10/01 17:06:36 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/01 17:23:50 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#include "libft.h"
 
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdio.h>
-
-typedef struct s_list
+void	ft_bzero(void *str, size_t len)
 {
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}				t_list;
+	size_t			i;
+	char			*ptr;
 
-#endif
+	i = 0;
+	ptr = (char *)str;
+	while (i < len)
+	{
+		ptr[i++] = '\0';
+	}
+}
