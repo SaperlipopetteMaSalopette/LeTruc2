@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/01 10:51:41 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/02 21:00:15 by thofstet         ###   ########.fr       */
+/*   Created: 2024/10/02 21:17:47 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/02 21:40:32 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(char *str)
-{
-	int	i;
+#include "libft.h"
 
-	i = 0;
-	while (str[i] != '\0')
-	{
-		i++;
-	}
-	return (i);
+int	ft_toupper(int c)
+{
+	char	ch;
+
+	ch = (char)c;
+	if (ch > 96 && ch < 123)
+		c -= 32;
+	return (c);
 }
