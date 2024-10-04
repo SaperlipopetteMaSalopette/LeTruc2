@@ -1,31 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 22:10:53 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/03 09:30:04 by thofstet         ###   ########.fr       */
+/*   Created: 2024/10/04 13:28:59 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/04 14:08:49 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_strncmp(const char *str1, const char *str2, size_t n)
+int	ft_atoi(const char *str)
 {
-	size_t	i;
+	int	signecompteur;
+	int	numeros;
+	int	i;
 
+	signe = 1;
+	numeros = 0;
 	i = 0;
-	while (n > 0)
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
 	{
-		while (i < (n - 1) && str1[i] != '\0'
-			&& str2[i] != '\0' && str1[i] == str2[i])
-			i++;
-		if (str1[i] == str2[i] && i == (n - 1))
-			return (0);
-		if (str1[i] != str2[i])
-			return ((unsigned char)str1[i] - (unsigned char)str[i]);
+		signecompteur = (- signecompteur);
+		i++;
 	}
-	return (0);
+	while (str[i] >= '0' && str[i] <= '9')
+		{
+			numeros = numeros * 10 + (str[i] - '0');
+			i++;
+		}
+	return (numeros * sign);
+}
+
+int	main(int argc, char **argv)
+{
+	(void)argc;
+	printf("%")
 }
