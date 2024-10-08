@@ -6,9 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 18:22:58 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/08 13:25:03 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/08 14:47:29 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 #include "libft.h"
 
