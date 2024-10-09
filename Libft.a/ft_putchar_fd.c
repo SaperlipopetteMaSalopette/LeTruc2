@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isascii.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 19:30:42 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/09 21:05:46 by thofstet         ###   ########.fr       */
+/*   Created: 2024/10/09 20:06:51 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/09 20:08:13 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isascii(int i)
+#include "libft.h"
+
+void	ft_putchar_fd(char c, int fd)
 {
-	if (i >= 0 && i <= 127)
-	{
-		return (1);
-	}
-	return (0);
+	write(fd, &c, 1);
 }

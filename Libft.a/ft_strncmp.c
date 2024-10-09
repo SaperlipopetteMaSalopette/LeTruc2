@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 22:10:53 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/03 09:30:04 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/09 20:52:47 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_strncmp(const char *str1, const char *str2, size_t n)
 		if (str1[i] == str2[i] && i == (n - 1))
 			return (0);
 		if (str1[i] != str2[i])
-			return ((unsigned char)str1[i] - (unsigned char)str[i]);
+			return ((unsigned char)str1[i] - (unsigned char)str2[i]);
 	}
 	return (0);
 }

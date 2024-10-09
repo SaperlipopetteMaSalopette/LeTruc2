@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: totoletoto <totoletoto@student.42.fr>      +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/02 14:34:02 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/04 16:16:36 by totoletoto       ###   ########.fr       */
+/*   Created: 2024/10/09 19:31:15 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/09 20:55:13 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 

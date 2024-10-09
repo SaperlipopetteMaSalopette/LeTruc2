@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nopauli <nopauli@student.42lausanne.ch>    +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/04 17:39:49 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/07 14:45:35 by nopauli          ###   ########.fr       */
+/*   Created: 2024/10/09 19:31:46 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/09 19:31:48 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
