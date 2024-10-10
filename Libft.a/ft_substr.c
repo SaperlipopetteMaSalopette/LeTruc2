@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:54:47 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/07 18:22:04 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:27:35 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	i = start;
 	j = 0;
 	if (!s || start >= ft_strlen(s) || len == 0)
-		return (0);
+		return ("");
 	str = malloc(sizeof(char) * (len + 1));
 	if (!str)
 		return (NULL);

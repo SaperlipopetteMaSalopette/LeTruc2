@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 17:24:27 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/07 17:09:42 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/10 16:20:18 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,12 @@
 
 int	ft_atoi(const char *str)
 {
-	int	signecompteur;
-	int	numeros;
-	int	i;
+	int		sign;
+	long	numbers;
+	int		i;
 
-	signecompteur = 1;
-	numeros = 0;
+	sign = 1;
+	numbers = 0;
 	i = 0;
 	if (!str)
 		return (0);
@@ -27,13 +27,14 @@ int	ft_atoi(const char *str)
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
-		signecompteur = -1;
+		if (str[i] == '-')
+			sign = -1;
 		i++;
 	}
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		numeros = numeros * 10 + (str[i] - '0');
+		numbers = numbers * 10 + (str[i] - '0');
 		i++;
 	}
-	return (numeros * signecompteur);
+	return ((int)numbers * sign);
 }

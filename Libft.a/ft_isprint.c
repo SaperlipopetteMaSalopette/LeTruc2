@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thofstet <marvin@42lausanne.ch>            +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/01 10:49:15 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/01 10:51:26 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/10 13:56:54 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_isprint(int i)
 {
-	if (i > 32 && i <= 126)
+	if (i >= 32 && i <= 126)
 	{
 		return (1);
 	}
