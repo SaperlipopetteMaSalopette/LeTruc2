@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thofstet <thofstet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/09 16:40:10 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/10 16:37:08 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/09 18:08:23 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,10 @@ char	*ft_itoa(int n)
 	long	nb;
 
 	len = ft_num_len(n);
+	str = "";
 	nb = n;
+	if (!n)
+		return (NULL);
 	str = ft_calloc(len + 1, sizeof(char));
 	if (!str)
 		return (NULL);

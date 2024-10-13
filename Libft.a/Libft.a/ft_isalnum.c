@@ -3,14 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalnum.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
+/*   By: thofstet <marvin@42lausanne.ch>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/30 17:58:19 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/11 16:34:17 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/01 10:55:22 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-#include "libft.h"
 
 int	ft_isalnum(int arg)
 {

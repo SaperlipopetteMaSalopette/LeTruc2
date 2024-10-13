@@ -3,29 +3,32 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: thofstet <thofstet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 23:22:17 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/10 14:53:09 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/03 01:06:13 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *str, int c, size_t n)
+void	*ft_memchr(const void *ptr, int c, size_t n)
 {
 	size_t			i;
-	unsigned char	j;
-	unsigned char	*sentence;
+	unsigned char	prout;
+	unsigned char	*phrase;
 
-	j = (unsigned char)c;
+	prout = (unsigned char)c;
 	i = 0;
-	sentence = (unsigned char *)str;
-	while (i < n)
+	phrase = (unsigned char *)ptr;
+	if (!ptr)
+		return (NULL);
+	while (i < n && phrase[i] != prout)
 	{
-		if (sentence[i] == j)
-			return ((void *)(str + i));
 		i++;
 	}
-	return (NULL);
+	if (phrase[i] == prout)
+		return ((void *)(ptr + i));
+	else
+		return (NULL);
 }

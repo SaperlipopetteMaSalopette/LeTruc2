@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 21:25:11 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/11 18:22:28 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/07 14:39:34 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,20 @@
 
 char	*ft_strchr(const char *str, int c)
 {
-	while (*str != (char)c)
+	size_t	i;
+	char	ch;
+
+	ch = (char)c;
+	i = 0;
+	if (!str)
+		return (NULL);
+	while (str[i] != '\0')
 	{
-		if (*str == '\0')
-			return (NULL);
-		str++;
+		if (str[i] == ch)
+			return ((char *)(str + i));
+		i++;
 	}
-	return ((char *)str);
+	if (ch == '\0')
+		return ((char *)(str + i));
+	return (NULL);
 }
