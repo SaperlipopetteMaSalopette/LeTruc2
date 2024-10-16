@@ -6,7 +6,7 @@
 #    By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 13:37:49 by thofstet          #+#    #+#              #
-#    Updated: 2024/10/15 14:33:18 by thofstet         ###   ########.fr        #
+#    Updated: 2024/10/16 17:19:44 by thofstet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -129,4 +129,129 @@ en première position et un argument int en seconde position.
 Si nous voulons avoir accès au premier argument, nous devons appeler va_arg une fois et spécifier le
 type de l'argument. Dans ce cas le premier argument est une chaîne, qui sera définie par un pointeur.
 
-Si nous voulons accéder au second argument, nous faisons la même chose. Mais
+Si nous voulons accéder au second argument, nous faisons la même chose. Mais cette fois-ci le type de l'argument
+est un "int".
+
+// accéder au premier argument (type "string")
+va_arg( args, char *) // "Thomas"
+
+// acceder au second argument (type "int")
+va_arg( args, int ) // 23
+
+Évidemment, c'est juste un exemple théorique de façon à ce que l'on comprenne comment va_arg fonctionne.
+En pratique, vu que l'on ne sait pas en avance combien d'arguments la fonction va prendre, nous pouvons imaginer
+que l'on devra créer des conditions pour chaque format spécifique.
+
+-------------va_end - fonction macro ------------------
+
+Une fois que l'on a fini notre programme, il ne faut pas oublier de clean up les objets que l'on a
+initialisés en appelant va_start.
+
+va_end peut modifier l'objet, qui était appelé "args" dans notre exemple précédent, afin que cela ne soit
+plus utilisable.
+
+va_end( va_list var);
+
+// et dans notre exemple:
+va_end(args);
+
+va_end() va free la mémoire allouée.
+
+
+----------Construire le truc --------------
+
+Les fonctions autorisées pour ce projet sont :
+
+- malloc
+
+- free
+
+- write
+
+- va_start
+
+- va_arg
+
+- va_copy
+
+- va_end
+
+N'importe quelle autre fonction utilisée causera l'échec du projet.
+
+Nous devons aussi faire un Makefile et un fichier header avec toutes les fonctions que nous allons utiliser.
+
+
+Formulation Générale -------------------------
+
+1. La fonction printf va écrire chaque caractère de la string initiale, un par un, jusqu'à ce qu'elle
+trouve un "%".
+
+2. Quand elle trouve un "%", elle va chercher l'élément qui se trouve à la prochaine position / index.
+Elle va trouver le caractère qui va définir le type du premier argument-variable.
+
+3. Dépendemment de ce qu'elle trouve, elle va appeler une méthode qui va afficher l'argument du
+type particulier à l'output.
+-> Si il y a un "s" après le "%", alors nous aurons besoin d'une fonction qui permet d'afficher des strings.
+
+-> Si il y a un "d" après le "%", alors nous aurons besoin d'une fonction qui permet d'afficher des nombres.
+
+4. Une fois que le premier argument a été affiché, nous retournons à l'étape 1, jusqu'à ce que la
+string soit terminée (autrement dit, jusqu'à ce qu'on trouve un caractère null).
+
+(1-4) : N'oubliez pas de compter le nombre de caractères imprimés chaque fois, afin de retourner le
+nombre final de caractères à la fin de la fonction.
+
+--------Exemples spécifiques --------------
+
+Regardons cet exemple de plus près et essayons de traduire les phrases suivantes en code :
+
+
+printf("hello my name is %s and I'm %d years old", "Thomas", 23);
+
+INDEX "hello my name is [%s] and I'm [%d] years old"\0
+	   123456789.....
+
+OUTPUT : hello my name is Thomas and I'm 23 years old
+COUNT    01234......                                 ->42 chars imprimés
+(de chars)
+
+
+1. Notre programme va écrire les caractères de l'index 0 à 16, un par un,
+en incrémentant la variable "count".
+-> À cette étape du programme la fonction printf devrait avoir affiché "hello my name is"
+et le nombre que la fonction retourne est 17.
+
+2. Une fois qu'il rencontre le caractère "%", il arrête d'écrire et va regarder une position
++ loin.
+-> À cette étape nous pointons à la position / index 18.
+
+3. Le programme va maintenant checker le type de l'élements à cette position
+(la position après le "%"). Dans notre cas, le type du premier argument dynamique est 's' (%s).
+
+4. Nous allons devoir imprimer un-par-un les caractères que le programme vient de trouver.
+Vu que c'est une string, nous pouvons par exemple utiliser la fonction "ft_putstr" que nous avons
+créée dans libft pour imprimer chaque caractère. N'oublions pas d'aussi compter le nombre de caractères
+qui seront imprimés depuis cette string et de l'ajouter au count initiale.
+
+5. Une fois que le premier argument dynamique (celui qui correspont au %s) a été affiché,
+nous pouvons revenir à la phrase initiale et continuer le travail.
+-> À cette étape du programme la fonction printf devrait avoir affiché "hello my name is Thomas"
+et le nombre que la fonction retourne est 22 (= le nombre total de caractères affichés).
+
+6. Notre programme va alors encore écrire chaque caractère, un par un, de l'index 20 à 27
+tout en incrémentant la variable "count".
+
+7. Le programme va encore trouver un "%" (position 28 ish), arrêter d'écrire et chercher pour
+le prochain élement.
+
+8. Le programme va maintenant chercher le type d'élément à cette position (la position après le %).
+Dans notre cas, le type du deuxième argument dynamique est 'd' (%d). Cela veut dire que nous allons
+appeler une fonction qui imprime le nombre.
+-> À cette étape du programme, la fonction printf devrait avoir affiché
+"hello my name is Thomas and I'm 23".
+
+9. Notre programme va alors encore écrire chaque caractère, un par un, de l'index 30
+jusqu'à la fin tout en incrémentant la variable "count".
+-> À cette étape du programme, la fonction printf devrait avoir affiché
+"hello my name is Thomas and I'm 23 years old" et le nombre que la fonction retourne est
+42 (environ, j'ai changé le prénom de Laura à Thomas) car il a imprimé 42 (ish) caractères.
