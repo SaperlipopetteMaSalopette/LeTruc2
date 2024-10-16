@@ -6,7 +6,7 @@
 #    By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/15 13:37:49 by thofstet          #+#    #+#              #
-#    Updated: 2024/10/16 17:19:44 by thofstet         ###   ########.fr        #
+#    Updated: 2024/10/16 18:50:17 by thofstet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -255,3 +255,222 @@ jusqu'à la fin tout en incrémentant la variable "count".
 -> À cette étape du programme, la fonction printf devrait avoir affiché
 "hello my name is Thomas and I'm 23 years old" et le nombre que la fonction retourne est
 42 (environ, j'ai changé le prénom de Laura à Thomas) car il a imprimé 42 (ish) caractères.
+
+
+
+-----Spécificateur de conversion-------
+
+En C, un Spécificateur de conversion est un élément essentiel utilisé dans les
+fonctions de formatage comme printf pour indiquer comment un argument doit
+être converti et affiché. Voici les points clés :
+
+Structure de base :
+
+Un Spécificateur de conversion commence toujours par le symbole "%"
+et se termine par un caractère qui indique le type de conversion.
+Par exemple, %d pour un entier décimal.
+
+Types de conversion courants :
+
+- %d ou %i : Entier décimal signé
+
+- %u : Entier décimal non signé
+
+- %f : Nombre à virgule flottante
+
+- %c : caractère unique
+
+- %s : chaîne de caractères
+
+- %x ou %X : Entier hexadécimal (minuscule ou majuscule)
+
+- %o : Entier octal
+
+- %p : Adresse mémoire (pointeur)
+
+Modificateurs optionnels :
+
+Entre le % et le caractère de type, on peut ajouter des Modificateurs :
+
+- Drapeaux (comme "-" pour l'alignement à gauche)
+
+- Largeur minimale de champ
+
+- Précision (pour les nombres à virgule flottante)
+
+- Modificateurs de longueur (comme "l" pour long)
+
+Exemple d'utilisation :
+
+int nombre = 42;
+printf("La valeur est : %d \n", nombre);
+
+
+Importance :
+
+Les Spécificateurs de conversion sont cruciaux pour :
+
+1. Contrôler le format d'affichage des données
+
+2. Assurer la correspondance entre les types de données et leur représentation
+
+3. Permettre une mise en forme précise de la sortie
+
+En maîtrisant ces spécificateurs, vous pouvez créer des affichages formatés
+précis et adaptés à vos besoins.
+
+---------- cspdiuxX% --------------
+
+Il est important de comprendre que "cspdiuxX%" fait référence aux
+spécificateurs de conversion utilisés dans les fonctions de formatage comme
+printf en langage C. Voici une explication :
+
+Types de conversion :
+
+caractères et chaînes :
+
+- %c : affiche un caractère unique
+
+- %s : affiche une string
+
+Nombres entiers :
+
+- %d ou %i : affiche un entier signé en base 10
+
+- %u : affiche un entier non signé en base 10
+
+Nombres en bases différentes :
+
+- %o : affiche un entier non signé en base 8 (octale)
+
+- %x : affiche un entier non signé en base 16 (hexadécimal) en minuscules
+
+- %X : affiche un entier non signé en base 16 (hexadécimal) en majuscules
+
+Nombres à virgule flottante :
+
+- %f : affiche un nombre à virgule flottante
+
+Caractère spécial :
+
+- %% : affiche le caractère '%' lui-même
+
+Utilisation
+
+Ces spécificateurs sont utilisés dans les chaînes de format pour indiquer
+comment les arguments doivent être affichés. Par exemple :
+
+printf("Entier : %d, Caractère : %c, Flottant : %f", 42, 'A', 3.14);
+
+
+
+Options de formatage :
+
+Vous pouvez également utiliser des options pour contrôler la largeur, la
+précision et l'alignement :
+
+- Largeur minimale : '%5d' affichera l'entier sur au moins 5 caractères
+
+- Précision : '%.2f' affichera un flottant avec 2 chiffres après la virgule
+
+- Alignement : '%-10s' alignera la chaîne à gauche sur 10 caractères
+
+Ces spécificateurs de conversion sont essentiels pour formater correctement
+la sortie de vos programmes en C, permettant un contrôle précis sur
+l'affichage des différents types de données.
+
+----------- Makefile : ar --------------
+
+La commande 'ar' dans un Makefile en C est utilisée pour créer et gérer des
+bibliothèques d'archives statiques. Voici les points essentiels :
+
+Fonction principale :
+
+'ar' permet de regrouper plusieurs fichiers objets (.o) en une seule bibliothèques
+statique (.a).
+
+Utilisation courante :
+
+Dans un Makefile, 'ar' est généralement utilisée pour :
+
+1. Créer une nouvelle bibliothèque
+
+2. Ajouter des fichiers objets à une bibliothèque existante
+
+3. Extraire des fichiers d'une bibliothèque
+
+4. Lister le contenu d'une bibliothèque
+
+Syntaxe de base :
+
+La syntaxe typique dans un Makefile est :
+
+libname.a : file1.o file2.o file3.o
+	$(AR) $(ARFLAGS) $@ $^
+
+Où :
+
+- '$(AR)' est la variable contenant la commande 'ar'
+
+- '$(ARFLAGS)' sont les options pour 'ar'
+
+- '$@' représente le nom de la cible (libname.a)
+
+- '$^' représente toutes les dépendances (file1.o file2.o file3.o)
+
+Options courantes :
+
+- 'r' : Remplace ou aoute les fichiers à l'archives
+
+- 'c' : Crée l'archive si elle n'existe pas
+
+- 's' : Crée un index pour l'archive (équivalent à utiliser 'ranlib')
+
+
+Exemple pratique :
+
+libmylib.a: foo.o bar.o baz.o
+	$(AR) rcs $@ $^
+
+	Cette commande crée ou met à jour libmylib.a avec les fichiers objets
+	foo.o, bar.o et baz.o .
+
+Importance :
+
+L'utilisation de 'ar' dans un Makefile est cruciale pour :
+
+1. Organiser le code en bibliothèques réutilisables
+
+2. Faciliter la gestion des dépendances
+
+3. Optimiser le processur de compilation en ne recompilant que les fichiers
+modifiés
+
+En maîtrisant l'utilisation de 'ar' dans vos Makefiles, vous pouvez créer des
+projets C plus modulaires et plus faciles à maintenir.
+
+
+----- Buffer management du printf original (ne pas implémenter) --------
+
+Il est important de comprendre que le buffer management (gestion de tampon)
+de la fonction printf en C est un mécanisme d'optimisation des performances
+pour les opérations d'entrée/sortie. Voici les points clés :
+
+Principe de base :
+
+Le buffer est une zone de mémoire temporaire où printf stocke les données
+avant de les envoyer à la sortie standard (généralement l'écran).
+
+Fonctionnement :
+
+1. Lorsque vous appelez printf, le texte n'est pas immédiatement
+affiché à l'écran.
+
+2. Il est d'abord stocké dans un buffer interne.
+
+3. Le contenu du buffer est envoyé à l'écran seulement quand certaines
+conditions sont remplies.
+
+Types de buffering :
+
+
