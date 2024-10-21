@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_print_char.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/15 13:33:35 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/21 18:31:33 by thofstet         ###   ########.fr       */
+/*   Created: 2024/10/16 18:52:11 by thofstet          #+#    #+#             */
+/*   Updated: 2024/10/21 15:32:47 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdlib.h>
-# include <unistd.h>
-# include <stdarg.h>
-
-ssize_t		ft_printf(const char *format, ...);
-ssize_t		ft_print_char(char c);
-ssize_t		ft_print_string(char *s);
-ssize_t		ft_putnbr(int i);
-ssize_t		ft_putchar(char c);
-ssize_t		ft_putstr(char *s);
-ssize_t		ft_numlen(unsigned int n);
-int			ft_print_unsigned_dec(unsigned int i);
-ssize_t		ft_numlen(unsigned int n);
-ssize_t		ft_strlen(char *str);
-int			ft_print_pointer(unsigned long tmp, char *base);
-
-#endif
+ssize_t	print_char(char c)
+{
+	write(1, &c, 1);
+	return (1);
+}
 
 /*
 ⠀⠀⠀⠀⠀⠀⠀⠀⢀⣀⣀⡠⠖⢉⣌⢆⠀⠀⠀⠀⠀
@@ -43,4 +30,6 @@ int			ft_print_pointer(unsigned long tmp, char *base);
 ⠀⠈⢆⠀⠀⠀⠉⠒⠒⣉⡀⠀⠀⢇⠀⡇⠀⠀⢠⠃⠀⠀
 ⠀⠀⠈⠣⡀⠀⠀⠀⠀⠀⢉⡱⠀⠀⠉⠀⢀⡴⠁⠀⠀⠀
 ⠀⠀⠀⠀⠈⠓⠦⣀⣉⡉⠁⢀⣀⣠⠤⠒⠥⣄⠀⠀⠀⠀
-⠀⠀⠀⠀⠀⠰⣉⣀⣀⡠⠭⠛⠀⠀⠑⠒⠤⠤⠷⠀⠀⠀*/
+⠀⠀⠀⠀⠀⠰⣉⣀⣀⡠⠭⠛⠀⠀⠑⠒⠤⠤⠷⠀⠀
+
+Rondoudou meilleur perso smash⠀*/

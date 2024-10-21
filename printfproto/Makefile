@@ -1,43 +1,40 @@
-	NAME			=	libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/10/16 23:19:50 by thofstet          #+#    #+#              #
+#    Updated: 2024/10/21 18:31:47 by thofstet         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
-AR				=	ar
-ARFLAGS 		=	rcs
-RM				=	rm -rf
 
-SRC				=	ft_printf ft_print_char ft_print_str ft_print_hex ft_print_int ft_print_ptr ft_print_unsigned ft_nbr_len ft_flags ft_flags_utils ft_print_flag ft_printf_itoa ft_printf_utoa ft_printf_xtoa
-SRCS 			=	$(addsuffix .c, $(SRC))
+NAME = libftprintf.a
 
-OBJ_DIR			=	obj
-OBJS			=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
+SRC =	ft_numlen ft_print_char ft_print_hexa ft_print_int ft_print_string ft_print_unsigned_dec ft_printf ft_putchar ft_putnbr ft_putstr ft_strchr ft_strlen ft_print_pointer
+SRCS =	$(addsuffix .c, $(SRC))
 
-LIBFT_PATH		=	./libft
-LIBFT			=	$(LIBFT_PATH)/libft.a
+OBJS = ${SRCS:.c=.o}
 
-$(OBJ_DIR)/%.o:		%.c
-					$(CC) $(CFLAGS) -c $< -o $@
+CC = gcc
 
-all:				$(NAME)
+CFLAGS = -Wall -Werror -Wextra
 
-$(NAME):			$(LIBFT) $(OBJ_DIR) $(OBJS)
-				cp	$(LIBFT) $(NAME)
-					$(AR) $(ARFLAGS) $(NAME) $(OBJS)
+OBJS = $(SRCS:.c=.o)
 
-$(LIBFT):
-					make -C $(LIBFT_PATH) all
+all: $(NAME)
 
-$(OBJ_DIR):
-					mkdir -p $(OBJ_DIR)
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
-					make -C $(LIBFT_PATH) clean
-					$(RM) $(OBJ_DIR)
+	rm -rf $(OBJS)
 
-fclean:				clean
-					make -C $(LIBFT_PATH) fclean
-					$(RM) $(NAME)
+fclean: clean
+	rm -rf $(NAME)
 
-re:					fclean all
+re: fclean all
 
-.PHONY:				all bonus clean fclean re libft
+.SILENT:
