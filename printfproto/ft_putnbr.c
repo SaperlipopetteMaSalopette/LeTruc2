@@ -6,28 +6,33 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:19:32 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/23 19:09:13 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:18:59 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	ft_putnbr(int n)
+int	ft_putnbr(int n)
 {
-	unsigned long	i;
+	int	count;
 
-	i = n;
-	if (i < 0)
+	count = 0;
+	if (n <= -2147483648)
 	{
-		ft_print_char('-');
-		i = -i;
+		ft_putstr("-2147483648");
+		return (11);
 	}
-	if (i / 10)
+	if (n < 0)
 	{
-		ft_putnbr(i / 10);
-		ft_putnbr(i % 10);
+		count += ft_print_char('-');
+		n = -n;
+	}
+	if (n / 10)
+	{
+		count += ft_putnbr(n / 10);
+		count += ft_putnbr(n % 10);
 	}
 	else
-		ft_print_char('0' + i);
-	return (1);
+		count += ft_print_char('0' + n);
+	return (count);
 }

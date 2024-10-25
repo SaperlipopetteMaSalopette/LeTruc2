@@ -6,13 +6,13 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 22:32:16 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/23 19:09:30 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/25 14:12:49 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
 	unsigned int	i;
 
@@ -24,5 +24,5 @@ ssize_t	ft_putstr(char *s)
 		ft_print_char(s[i]);
 		i++;
 	}
-	return (0);
+	return (i);
 }
