@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 06:08:02 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/17 06:30:50 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:43:08 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static char	*ft_utoa(unsigned int i)
 		str[--len] = n % 10 + 48;
 		n /= 10;
 	}
-	str[ft_numlen(c)] = '\0';
+	str[ft_numlen(i)] = '\0';
 	return (str);
 }
 

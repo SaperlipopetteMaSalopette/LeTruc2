@@ -6,9 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 04:36:12 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/17 04:37:10 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/21 15:19:37 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 ssize_t	ft_strlen(char *str)
 {

@@ -6,20 +6,20 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 01:19:32 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/17 01:23:32 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:09:13 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int n)
+ssize_t	ft_putnbr(int n)
 {
 	unsigned long	i;
 
 	i = n;
 	if (i < 0)
 	{
-		ft_putchar('-');
+		ft_print_char('-');
 		i = -i;
 	}
 	if (i / 10)
@@ -28,6 +28,6 @@ int	ft_putnbr(int n)
 		ft_putnbr(i % 10);
 	}
 	else
-		ft_putchar('0' + i);
+		ft_print_char('0' + i);
 	return (1);
 }

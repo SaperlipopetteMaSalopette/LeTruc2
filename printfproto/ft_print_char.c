@@ -6,15 +6,15 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/16 18:52:11 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/17 04:39:07 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/23 19:16:19 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-ssize_t	print_char(char c)
+ssize_t	ft_print_char(char c)
 {
-	ft_putchar_fd(c, 1);
+	write(1, &c, 1);
 	return (1);
 }
 

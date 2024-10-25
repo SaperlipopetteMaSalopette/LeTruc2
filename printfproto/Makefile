@@ -6,41 +6,35 @@
 #    By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/16 23:19:50 by thofstet          #+#    #+#              #
-#    Updated: 2024/10/16 23:35:15 by thofstet         ###   ########.fr        #
+#    Updated: 2024/10/23 19:08:50 by thofstet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-	NAME			=	libftprintf.a
+NAME = libftprintf.a
 
-CC				=	gcc
-CFLAGS			=	-Wall -Wextra -Werror
-AR				=	ar
-ARFLAGS 		=	rcs
-RM				=	rm -rf
+SRC =	ft_numlen ft_print_char ft_print_hexa ft_print_int ft_print_string ft_print_unsigned_dec ft_printf ft_putnbr ft_putstr ft_strchr ft_strlen ft_print_pointer
+SRCS =	$(addsuffix .c, $(SRC))
 
-SRC				=	ft_printf ft_print_char ft_print_string
-SRCS 			=	$(addsuffix .c, $(SRC))
+OBJS = ${SRCS:.c=.o}
 
-OBJ_DIR			=	obj
-OBJS			=	$(SRCS:%.c=$(OBJ_DIR)/%.o)
+CC = gcc
 
-$(OBJ_DIR)/%.o:		%.c
-					$(CC) $(CFLAGS) -c $< -o $@
+CFLAGS = -Wall -Werror -Wextra
 
-all:				$(NAME)
+OBJS = $(SRCS:.c=.o)
 
-$(OBJ_DIR):
-					mkdir -p $(OBJ_DIR)
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	ar rcs $(NAME) $(OBJS)
 
 clean:
-					make -C $(LIBFT_PATH) clean
-					$(RM) $(OBJ_DIR)
+	rm -rf $(OBJS)
 
-fclean:				clean
-					make -C $(LIBFT_PATH) fclean
-					$(RM) $(NAME)
+fclean: clean
+	rm -rf $(NAME)
 
-re:					fclean all
+re: fclean all
 
-.PHONY:				all clean fclean re
+.SILENT:
