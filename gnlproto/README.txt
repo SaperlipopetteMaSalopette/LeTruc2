@@ -6,6 +6,7 @@ File descriptor -> reference qui pointe vers un fichier ouvert sur l'ordinateur 
 Un file descriptor en C est un entier utilise pour identifier une ressource ouverte, comme un
 fichier ou un socket, au sein d'un programme. Les file descriptors sont principalement
 utilisés dans les systèmes Unix et Unix-like.
+Référence qui pointe vers un fichier qui est ouvert dans l'ordinateur.
 
 Points-clés :
 
@@ -185,4 +186,41 @@ Outre les fonctions ci-dessus, nous pourrious aussi avoir besoin de ces 3 autres
 - char *_fill_line_buffer(int fd, char *left_c, char *buffer);
 - char *_set_line(char *line_buffer);
 
+--------------------Explications des fonctions :-------------------
+
+
+------char *get_next_line(int fd)
+
+La fonction principale get_next_line est simplement responsable de faire quelques checks sur
+le file descriptor et les allocations de mémoire qui pourraient causer des erreurs.
+
+Une fois que tous les checks ont été faits, la fonction appelle la fonction
+_file_line_buffer pour lire dans le file descriptor jusqu'à ce que ça trouve un '\n'
+ou un '\0'.
+
+Une fois que la variable de ligne est remplie, on va free le buffer afin de ne pas avoir
+de leak de mémoire, vu que ce n'est plus utilisé.
+
+Une fois que le buffer est free, nous mettons la ligne avec la fonction "_set_line"
+et nous retournons la ligne, en storant la valeur de return() de set_line dans une
+variable static afin que la prochaine fois que nous appelons get_next_line, nous avons
+accès au premier caractère de la ligne qui a pu être lue au préalable.
+
+Par exemple, notre fichier contient "1\n234\0", notre BUFFER_SIZE est de 4.
+La première fois que nous allons lire dans le fichier, nous allons lire "1\n23"
+donc ce que nous allons stocker dans notre variable static est "23" parce que la
+prochaine fois que nous allons appeler la fonction sur le même fd, ça va commencer
+en lisant à partir du '4' dans notre fichier.
+
+
+
+-----char *_fill_line_buffer(int fd, char *left_c, char *buffer)
+
+Cette fonction est le buffer de "line".
+Elle va lire "BUFFER_SIZE" caractères dans chaque itération jusqu'à ce qu'il y ai
+un '\n' ou un '\0' dans le buffer de line.
+
+À chaque fois dans la boucle, elle va checker si il y a déjà de la data dans
+le buffer "left_c". Si il y en a, elle va rajouter les nouveaux caractères lus à la suite.
+Si il n'y en a pas,
 
