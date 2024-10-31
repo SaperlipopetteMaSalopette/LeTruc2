@@ -6,40 +6,122 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 18:20:02 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/28 17:38:37 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:37:10 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_next_line(int fd, char **line)
+char	*ft_free_buffer(char *buffer, char *buf)
 {
-	static char	*buffer;
-	char		temp[BUFFER_SIZE + 1];
-	int			bytes_read;
+	char	*temp;
 
-	bytes_read = 0;
-	if (fd < 0 || !line || BUFFER_SIZE <= 0)
-		return (-1);
+	temp = ft_strjoin(buffer, buf);
+	free(buffer);
+	return (temp);
 }
 
-/* static char *buffer -> Buffer statique pour conserver les donnees entre
-les appels.
+char	*ft_next(char *buffer)
+{
+	int		i;
+	int		j;
+	char	*new_buffer;
 
-char temp[BUFFER_SIZE] -> Buffer temporaire pour la lecture.
+	i = 0;
+	while (buffer[i] != '\0' && buffer[i] != '\n')
+		i++;
+	if (buffer[i] == '\0')
+	{
+		free(buffer);
+		return (NULL);
+	}
+	i++;
+	j = 0;
+	while (buffer[i + j])
+		j++;
+	new_buffer = malloc(sizeof(char) * (j + 1));
+	if (!new_buffer)
+		return (free(buffer), NULL);
+	j = -1;
+	while (buffer[i + ++j] != '\0')
+		new_buffer[j] = buffer[i + j];
+	new_buffer[j] = '\0';
+	free(buffer);
+	return (new_buffer);
+}
 
-int bytes_read -> Nombre d'octets lus.
+char	*ft_line(char *buffer)
+{
+	char	*line;
+	int		i;
 
-on initialise ce qu'on doit initialiser.
-Ensuite on verifie si le fd est en dessous de 0 || si il n'y a pas de
-line ou si le BUFER_SIZE est en dessous ou egal a 0. Return (-1) (erreur)
-dans ces cas. (On s'assure que le descripteur (fd) est valide, que line
-n'est pas nul et que BUFFER_SIZE est positif).
+	i = 0;
+	if (!buffer[i])
+		return (NULL);
+	while (buffer[i] && buffer[i] != '\n')
+		i++;
+	line = ft_calloc(i + 2, sizeof(char));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while (buffer[i] && buffer[i] != '\n')
+	{
+		line[i] = buffer[i];
+		i++;
+	}
+	if (buffer[i] == '\n')
+	{
+		line[i] = '\n';
+		i++;
+	}
+	return (line);
+}
 
+char	*read_file(int fd, char *res)
+{
+	char	*buffer;
+	int		read_byte;
 
+	buffer = ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!buffer)
+		return (NULL);
+	if (!res)
+		res = ft_calloc(1, sizeof(char));
+	read_byte = 1;
+	while (read_byte > 0)
+	{
+		read_byte = read(fd, buffer, BUFFER_SIZE);
+		if (read_byte == -1)
+			return (free(buffer), NULL);
+		buffer[read_byte] = '\0';
+		res = ft_free_buffer(res, buffer);
+		if (!res)
+			return (free(buffer), NULL);
+		if (ft_strchr(buffer, '\n'))
+			break ;
+	}
+	free(buffer);
+	return (res);
+}
 
+char	*get_next_line(int fd)
+{
+	static char	*buffer;
+	char		*line;
 
-
-Buffer statique -> pour conserver les donnees entre les appels.
-Buffer temporaire -> pour stocker les donnees lues a chaque appel.
-*/
+	if (fd < 0 || BUFFER_SIZE <= 0 || read(fd, 0, 0) < 0)
+	{
+		if (buffer != NULL)
+		{
+			free(buffer);
+			buffer = NULL;
+		}
+		return (NULL);
+	}
+	buffer = read_file(fd, buffer);
+	if (!buffer)
+		return (NULL);
+	line = ft_line(buffer);
+	buffer = ft_next(buffer);
+	return (line);
+}

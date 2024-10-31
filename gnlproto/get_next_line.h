@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 17:39:57 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/28 17:37:42 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/10/31 15:35:03 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # include <fcntl.h>
 
 char	*get_next_line(int fd);
-char	*ft_strdup(char *s);
-size_t	ft_strlen(char *s);
-char	*ft_substr(char *s, unsigned int start, size_t len);
-char	*ft_strjoin(char *s1, char *s2);
-void	fill_str(char *res, char *s1, char *s2);
+char	*ft_strjoin(const char *s1, const char *s2);
+void	*ft_calloc(size_t count, size_t size);
+size_t	ft_strlen(const char *str);
+char	*ft_strchr(const char *s, int c);
+void	ft_bzero(void *s, size_t n);
 
 #endif

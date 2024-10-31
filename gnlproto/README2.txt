@@ -65,5 +65,52 @@ char *read_file(int fd, char *res)
 			et return(la string de résultat mise à jour).
 	Si une erreur se produit pendant la lecture, la fonction return(NULL)
 		et free la mémoire.
-	En résumé :
+	En résumé : prends morceau par morceau et regarde si il y a un '\n'.
 }
+
+char	*get_next_line(int fd)
+{
+	Fonction principale.
+	Récupère la prochaine ligne depuis le fd (fd -> fichier qu'on appelle).
+	Lit la data, extrait la ligne d'après et update le buffer.
+}
+-------------------------------main test
+
+#include <stdio.h>
+#include <fcntl.h>
+#include "get_next_line.h"
+
+int	main(void)
+{
+	int fd = open("test.txt", O_RDONLY);
+	if (fd < 0)
+	{
+		perror("Error opening file");
+		return (1);
+	}
+
+	char	*line;
+	while ((line = get_next_line(fd)) != NULL)
+	{
+		printf("Line: %s, line);
+		free(line);
+	}
+	close(fd);
+	return (0);
+}
+
+On ouvre le fichier en read-only.
+Si il n'y a pas de fichier, on affiche une erreur.
+On imprime la ligne puis on free la mémoire.
+Puis on close le fichier et on return(0).
+
+---------------MISC infos
+
+la fonction read :
+read lit jusqu'à count octets depuis le fd et le stocks dans un buffer.
+La lecture commence à la position actuelle du pointeur de fichier du fd.
+Retour : La fonction read() return(le nombre d'octets lus, peut < count).
+Si read() atteint la fin du fichier, return(0).
+En cas d'erreur, return(-1).
+
+
