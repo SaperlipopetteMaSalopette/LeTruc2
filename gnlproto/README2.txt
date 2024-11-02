@@ -44,28 +44,32 @@ char	*ft_next(char *buffer)
 {
 	Sert à avancer buffer après le '\n'.
 	Return(la data restante en tant que new_buffer).
+	En gros on skip d'abord la première ligne,
+	on vérifie si on est arrivés à un '\0' ou un '\n',
+	si on est arrivés sur un '\0' on return NULL (EOF).
+	Si on est arrivés à un '\n', on met tout le reste dans le new buffer.
+	La fonction sert juste à effacer du buffer ce qui a déjà été "processed".
 }
 
 char *ft_line(char *buffer)
 {
-	Extrait une ligne (jusqu-au '\n' inclus)
-	de buffer et le return en tant que new string.
+	Extrait une ligne (jusqu-au '\n' inclus mais pas plus loin)
+	depuis le buffer et le return en tant que new string (line).
 }
 
 char *read_file(int fd, char *res)
 {
-	Lit la data depuis le fd donné en argument dans un
-		buffer temporaire.
-	Cette data est ajoutée a la string de resultat (res) jusqu'à
-		ce qu'un '\n' soit trouvé, ou jusqu'à ce que la fin du fichier
-		soit rencontrée (EOF End Of File).
+	Lit BUFFER_SIZE de data depuis le fd donné en argument dans un
+		buffer temporaire, en boucle jusqu'à trouver
+		un '\n' ou un '\0' (EOF End Of File).
+	Cette data est ajoutée a la string de resultat (res)
 	Cette fonction gère les allocation dynamiques de mémoire pour
 		le buffer et la string de résultat.
 		Si un '\n' est trouvé, la fonction arrête de lire + loin
 			et return(la string de résultat mise à jour).
 	Si une erreur se produit pendant la lecture, la fonction return(NULL)
 		et free la mémoire.
-	En résumé : prends morceau par morceau et regarde si il y a un '\n'.
+	En résumé : lit et inspecte morceau par morceau et regarde si il y a un '\n'.
 }
 
 char	*get_next_line(int fd)
