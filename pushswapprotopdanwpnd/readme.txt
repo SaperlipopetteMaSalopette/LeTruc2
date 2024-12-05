@@ -80,3 +80,91 @@ head_to = tmp;
 - **`*stack_to`** : Utilisé pour modifier directement la vraie pile (dans le programme principal).
 - **`head_to`** : Utilisé pour travailler temporairement avec la tête de la pile, localement, sans affecter directement la vraie pile.
 
+-------------------------------------
+
+Pour int	rotate(t_list **stack)
+{
+	t_list	*head;
+	t_list	*butt;
+
+	if (ft_lstsize(*stack) < 2)
+		return (-1);
+	head = *stack;
+	butt = ft_lstlast(head);
+	*stack = head->next;
+	head->next = NULL;
+	butt->next = head;
+	return (0);
+}
+
+Que fait cette fonction ?
+
+La fonction rotate :
+
+    Prend le premier wagon (le "chef du train").
+    Le détache.
+    Le met tout à la fin du train.
+
+Si le train a moins de 2 wagons, on dit : "C'est trop court pour bouger quoi que ce soit !" et on s'arrête là.
+Étape par étape
+1. Est-ce qu'on peut bouger ?
+
+if (ft_lstsize(*stack) < 2)
+    return (-1);
+
+    Avant de faire quoi que ce soit, on regarde si le train a au moins 2 wagons.
+        Si le train est trop court (1 ou 0 wagon), on dit : "Je ne peux pas tourner un train aussi petit !" et on retourne -1.
+
+2. On attrape le chef du train et le dernier wagon
+
+head = *stack;
+butt = ft_lstlast(head);
+
+    head = *stack : Le "chef du train" est le premier wagon (la tête de la liste).
+    butt = ft_lstlast(head) : On va chercher le dernier wagon du train (la queue de la liste).
+
+3. On détache le chef du train
+
+*stack = head->next;
+head->next = NULL;
+
+    *stack = head->next : On dit au train que le deuxième wagon devient le nouveau "chef" (la tête de la liste).
+    head->next = NULL : On détache complètement le premier wagon (il ne pointe plus sur les autres).
+
+4. On attache le chef à la fin
+
+butt->next = head;
+
+    Le dernier wagon du train (butt) attrape l'ancien chef et l'accroche derrière lui.
+    Maintenant, l'ancien chef est tout à la fin du train.
+
+5. Mission accomplie
+
+return (0);
+
+    On retourne 0 pour dire : "C'est bon, le train a tourné !"
+
+Exemple imagé
+Avant l'appel à rotate :
+
+    Train : 1 → 2 → 3 → 4
+
+1 = chef du train
+4 = dernier wagon
+Après l'appel à rotate :
+
+    Train : 2 → 3 → 4 → 1
+
+Le chef du train (1) est parti tout à la fin !
+Imagine un vrai train
+
+    Si le train commence avec des wagons [A, B, C, D], la fonction fait ceci :
+        Elle prend le wagon A (le premier).
+        Elle détache A et dit : "B devient le chef maintenant."
+        Elle accroche A tout à la fin, après D.
+
+Résultat : [B, C, D, A].
+
+------------------------------
+
+
