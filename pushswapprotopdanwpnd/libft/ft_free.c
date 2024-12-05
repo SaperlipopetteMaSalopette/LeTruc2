@@ -1,29 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/03 16:04:10 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/05 17:09:14 by thofstet         ###   ########.fr       */
+/*   Created: 2024/12/04 15:27:08 by thofstet          #+#    #+#             */
+/*   Updated: 2024/12/04 15:28:09 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-int	ft_lstsize(t_list *head)
+void	ft_free(char **str)
 {
-	size_t	count;
-	t_list	*tmp;
+	int	i;
 
-	count = 0;
-	tmp = head;
-	while (tmp)
-	{
-		count++;
-		tmp = tmp->next;
-	}
-	return (count);
+	i = 0;
+	while (str[i])
+		i++;
+	while (i >= 0)
+		free(str[i--]);
 }

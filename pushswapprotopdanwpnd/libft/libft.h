@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/07 16:55:14 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/11 17:59:05 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/05 17:52:52 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ typedef struct s_list
 	struct s_list	*next;
 }	t_list;
 
+t_list	ft_lstlast(t_list *lst);
+int		ft_lstsize(t_list *head);
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);

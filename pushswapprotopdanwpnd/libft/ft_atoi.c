@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/04 17:24:27 by thofstet          #+#    #+#             */
-/*   Updated: 2024/10/13 15:59:30 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/04 17:43:03 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	ft_atoi(const char *str)
 			return (0);
 		i++;
 	}
-	return ((int)(numbers * sign));
+	return ((long)(numbers * sign));
 }
 /*
 ⢀⡴⠑⡄⠀⠀⠀⠀⠀⠀⠀⣀⣀⣤⣤⣤⣀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
