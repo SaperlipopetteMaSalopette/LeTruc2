@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:50:17 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/06 21:37:16 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/06 22:13:36 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,31 @@ int	reverserotate(t_list **stack)
 	return (0);
 }
 
+int	rra(t_list	**stack_a)
+{
+	if (reverserotate(stack_a) == -1)
+		return (-1);
+	ft_putendl_fd("rra", 1);
+	return (0);
+}
+
+int	rrb(t_list	**stack_b)
+{
+	if (reverserotate(stack_b) == -1)
+		return (-1);
+	ft_putendl_fd("rrb", 1);
+	return (0);
+}
+
+int	rrr(t_list	**stack_a, t_list	**stack_b)
+{
+	if ((ft_lstsize(*stack_a) < 2) || (ft_lstsize(*stack_b) < 2))
+		return (-1);
+	reverserotate(stack_a);
+	reverserotate(stack_b);
+	ft_putendl_fd("rrr", 1);
+	return (0);
+}
 /*
 if (!stack) || !*stack || !(*stack->next)) --> We check if :
 
@@ -48,7 +73,8 @@ if (!stack) || !*stack || !(*stack->next)) --> We check if :
 
 prev = current; --> prev starts at NULL, because there isn't a penultimate yet.
 current = *stack; --> current starts at the top of the list. (*stack).
-last = *stack; --> last also starts at the top, but it'll later be updated to point at the bottom.
+last = *stack; --> last also starts at the top, but it'll later be
+	updated to point at the bottom.
 
 while (current->next) --> We start going through the list.
 prev = current; --> We begin to arrange everything.
@@ -59,8 +85,10 @@ if (current->next == NULL)
 if (prev) --> We check if prev isn't NULL, meaning it has more than 1 element.
 prev->next = NULL; --> We cut the link between prev and the last element.
 Making the last element an isolated node.
-last->next = *stack; --> We make the last element point at the start of the list.
+last->next = *stack; --> We make the last element point at
+	the start of the list.
 Putting the previous last element at the top of the list.
-*stack = last; --> We update the principal list pointer so it now points at the actual
+*stack = last; --> We update the principal list pointer so it
+	now points at the actual
 top element, which was previously the last one.
 */
