@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 18:50:17 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/05 20:24:06 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/06 21:37:16 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,53 @@
 
 int	reverserotate(t_list **stack)
 {
-	t_list	*head;
-	t_list	*butt;
+	t_list	*prev;
+	t_list	*current;
+	t_list	*last;
 
-	if (ft_lstsize(*stack) < 2)
+	prev = NULL;
+	current = *stack;
+	last = *stack;
+	if (!stack || !*stack || !(*stack->next))
 		return (-1);
-	head = *stack;
-	butt = ft_lstlast(head);
-	while (head)
+	while (current->next)
 	{
-		if (head->next->next == NULL)
-		{
-			head->next = NULL;
-			break ;
-		}
-		head = head->next;
+		prev = current;
+		current = current->next;
+		if (current->next == NULL)
+			last = current;
 	}
-	butt->next = *stack;
-	*stack = butt;
+	if (prev)
+	{
+		prev->next = NULL;
+		last->next = *stack;
+		*stack = last;
+	}
 	return (0);
 }
+
+/*
+if (!stack) || !*stack || !(*stack->next)) --> We check if :
+
+- Stack is NULL (the pointer to the list doesn-t exist)
+- *stack is NULL (the list is empty)
+- (*stack->next) is NULL (the list only has one element)
+
+prev = current; --> prev starts at NULL, because there isn't a penultimate yet.
+current = *stack; --> current starts at the top of the list. (*stack).
+last = *stack; --> last also starts at the top, but it'll later be updated to point at the bottom.
+
+while (current->next) --> We start going through the list.
+prev = current; --> We begin to arrange everything.
+current = current->next; --> And we move forward.
+if (current->next == NULL)
+	last = current; --> if we've reached the last element, we call it last.
+
+if (prev) --> We check if prev isn't NULL, meaning it has more than 1 element.
+prev->next = NULL; --> We cut the link between prev and the last element.
+Making the last element an isolated node.
+last->next = *stack; --> We make the last element point at the start of the list.
+Putting the previous last element at the top of the list.
+*stack = last; --> We update the principal list pointer so it now points at the actual
+top element, which was previously the last one.
+*/

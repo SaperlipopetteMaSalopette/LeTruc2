@@ -168,3 +168,4 @@ Résultat : [B, C, D, A].
 ------------------------------
 
 
+if (head->next->next == NULL) = on check si on est a l'avant-dernier
