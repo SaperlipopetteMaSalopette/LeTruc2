@@ -6,11 +6,29 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:05:56 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/07 17:02:20 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/08 17:53:51 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+static void	init_stack(t_list **stack, int argc, char **argv)
+{
+	t_list	*new;
+	char	**arguments;
+	int		i;
+
+	i = 0;
+	if (argv < 2)
+		ft_error("No values entered bro");
+	else if (argc == 2)
+		args = ft_split(argv[1], ' ');
+	else if (argv > 2)
+	{
+		i = 1;
+		args = argv;
+	}
+}
 
 int	main(int argc, char **argv)
 {
