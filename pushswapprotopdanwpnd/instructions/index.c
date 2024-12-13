@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 17:11:37 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/07 17:25:11 by thofstet         ###   ########.fr       */
+/*   Created: 2024/12/12 17:38:42 by thofstet          #+#    #+#             */
+/*   Updated: 2024/12/12 20:37:11 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,23 @@
 
 static	t_list	*get_next_min(t_list **stack)
 {
-	t_list	*head;
+	t_list	*curr;
 	t_list	*min;
 	int		has_min;
 
 	min = NULL;
 	has_min = 0;
-	head = *stack;
-	if (head)
+	curr = *stack;
+	if (curr)
 	{
-		while (head)
+		while (curr)
 		{
-			if ((head->index == -1) && (!has_min || head->value < min->value))
+			if ((curr->index == -1) && (!has_min || curr->value < min->value))
 			{
-				min = head;
+				min = curr;
 				has_min = 1;
 			}
-			head = head->next;
+			curr = curr->next;
 		}
 	}
 	return (min);
@@ -50,5 +50,4 @@ void	index_stack(t_list **stack)
 		head->index = index++;
 		head = get_next_min(stack);
 	}
-	return (0);
 }
