@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:08:06 by thofstet          #+#    #+#             */
-/*   Updated: 2024/11/29 03:15:49 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/15 18:40:17 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static int	ft_contains(int num, char **argv, int i)
 	i++;
 	while (argv[i])
 	{
-		if (ft_atoi(argv[i]) == num)
+		if (ft_safe_atoi(argv[i]) == num)
 			return (1);
 		i++;
 	}
@@ -44,27 +44,27 @@ void	ft_check_args(int argc, char **argv)
 {
 	int		i;
 	long	tmp;
-	char	**args;
+	char	**arguments;
 
 	i = 0;
 	if (argc == 2)
-		args = ft_split(argv[1], ' ');
+		arguments = ft_split(argv[1], ' ');
 	else
 	{
 		i = 1;
-		args = argv;
+		arguments = argv;
 	}
-	while (args[i])
+	while (arguments[i])
 	{
-		tmp = ft_atoi(args[i]);
-		if (!ft_isnumargs[i])
+		tmp = ft_safe_atoi(args[i]);
+		if (!ft_isnum(args[i]))
 			ft_error("Error");
-		if (ft_contains(tmp, args, i))
+		if (ft_contains(tmp, arguments, i))
 			ft_error("Error");
 		if (tmp < -2147483648 || tmp > 2147483647)
 			ft_error("Error");
 		i++;
 	}
 	if (argc == 2)
-		ft_free(args);
+		ft_free(arguments);
 }

@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:38:42 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/12 20:37:11 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:27:41 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,24 @@
 
 static	t_list	*get_next_min(t_list **stack)
 {
-	t_list	*curr;
+	t_list	*current;
 	t_list	*min;
 	int		has_min;
 
 	min = NULL;
 	has_min = 0;
-	curr = *stack;
-	if (curr)
+	current = *stack;
+	if (current)
 	{
-		while (curr)
+		while (current)
 		{
-			if ((curr->index == -1) && (!has_min || curr->value < min->value))
+			if ((current->index == -1) && (!has_min
+					|| current->value < min->value))
 			{
-				min = curr;
+				min = current;
 				has_min = 1;
 			}
-			curr = curr->next;
+			current = current->next;
 		}
 	}
 	return (min);
@@ -50,4 +51,22 @@ void	index_stack(t_list **stack)
 		head->index = index++;
 		head = get_next_min(stack);
 	}
+}
+
+int	get_min_index(t_list **stack, int value)
+{
+	t_list	*current;
+	int		min;
+
+	if (!stack || !*stack)
+		return (-1);
+	current = *stack;
+	min = stack->index;
+	while (current)
+	{
+		if ((current->index < min) && current->index != val)
+			min = current->index;
+		current = current->next;
+	}
+	return (min);
 }

@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:05:56 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/08 17:53:51 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:48:30 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,32 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 	int		i;
 
 	i = 0;
-	if (argv < 2)
+	if (argc < 2)
 		ft_error("No values entered bro");
 	else if (argc == 2)
-		args = ft_split(argv[1], ' ');
-	else if (argv > 2)
+		arguments = ft_split(argv[1], ' ');
+	else if (argc > 2)
 	{
 		i = 1;
-		args = argv;
+		arguments = argv;
 	}
+	while (arguments[i])
+	{
+		new = ft_lstnew(ft_safe_atoi(arguments[i]));
+		ft_lstadd_back(stack, new);
+		i++;
+	}
+	index_stack(stack);
+	if (argc == 2)
+		ft_free(arguments);
+}
+
+static void	stack_sort(t_list **stack_a, t_list **stack_b)
+{
+	if (ft_lstsize(*stack_a) <= 5)
+		simple_sort(stack_a, stack_b);
+	else
+		radix_sort(stack_a, stack_b);
 }
 
 int	main(int argc, char **argv)
@@ -42,7 +59,7 @@ int	main(int argc, char **argv)
 	stack_b = (t_list **)malloc(sizeof(t_list));
 	*stack_a = NULL;
 	*stack_b = NULL;
-	initStack(stack_a, argc, argv);
+	init_stack(stack_a, argc, argv);
 	if (is_sorted(stack_a))
 	{
 		free_stack(stack_a);
