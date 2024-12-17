@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/15 16:37:08 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/15 23:27:17 by thofstet         ###   ########.fr       */
+/*   Created: 2024/12/17 19:44:25 by thofstet          #+#    #+#             */
+/*   Updated: 2024/12/17 22:52:34 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ int	issorted(t_list **stack)
 	t_list	current;
 
 	current = *stack;
+	if (!stack || !*stack)
+		ft_error("No stack");
 	while (current)
 	{
 		if (current->value > current->next->value)
@@ -29,11 +31,13 @@ int	issorted(t_list **stack)
 	}
 }
 
-int	simple_sort(t_list **stack_a, t_list **stack_b)
+void	simple_sort(t_list **stack_a, t_list **stack_b)
 {
+	if (!stack_a || !*stack_a)
+		ft_error("Error, no stack_a");
 	if (issorted(stack_a) == 1 || ft_lstsize(*stack_a) < 2)
 		return ;
-	if (ft_lstsize(stack_a) == 2)
+	else if (ft_lstsize(stack_a) == 2)
 		sa(stack_a);
 	else if (ft_lstsize(stack) == 3)
 		three_values(stack);
@@ -69,4 +73,17 @@ void	three_values(t_list **stack_a)
 		ra(stack_a);
 	}
 	return ;
+}
+
+void	four_values(t_list **stack_a, t_list **stack_b)
+{
+	int	a;
+	int	b;
+	int	c;
+	int	d;
+
+	a = get_min_index(stack_a);
+	b = (*stack_a)->next->index;
+	c = (*stack_a)->next->next->index;
+	c = (*stack_a)->next->next->next->index;
 }
