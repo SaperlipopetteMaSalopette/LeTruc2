@@ -6,14 +6,44 @@
 #    By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/13 19:18:10 by thofstet          #+#    #+#              #
-#    Updated: 2024/12/15 17:48:10 by thofstet         ###   ########.fr        #
+#    Updated: 2024/12/18 03:47:28 by thofstet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
-CHECK = checker
+CC = cc
+CFLAGS = -Wall -Wextra -Werror
+LIBFT_DIR = ./libft
+LIBFT = $(LIBFT_DIR)/libft.a
+SRCS = $(wildcard *.c src/*.c utils/*.c instruction/*.c)
+OBJS = $(SRCS:.c=.o)
+LIBS = -L$(LIBFT_DIR) -lft
 
-INT_MAX = 2147483647
-INT_MIN = -2147483648
-SRCS = $(wildcard src/*.c utils/*.c)
-CHECK_SRCS = $(wildcard utils/*.c) src/instructions.c checker.checker
+all: $(LIBFT) $(NAME)
+
+$(LIBFT):
+	@echo "Compiling libft"
+	@$(MAKE) -C $(LIBFT_DIR)
+
+$(NAME): $(OBJS) $(LIBFT)
+	@echo "Compiling $(NAME)"
+	$(CC) $(CFLAGS) $(OBJS) $(LIBS) -o $(NAME)
+	@echo "$(NAME) created successfully"
+
+%.o: %.c
+		$(CC) $(CFLAGS) -I$(INC_DIR) -I$(LIBFT_DIR)/include -c $< -o $@
+
+clean:
+	$(RM) $(OBJS)
+	@$(MAKE) -C $(LIBFT_DIR) clean
+	@$(MAKE) -C $(PRINTF_DIR) clean
+	@echo "Clean completed."
+
+fclean: clean
+	$(RM) $(NAME)
+	@$(MAKE) -C $(LIBFT_DIR) fclean
+	@echo "Full clean completed."
+
+re: fclean all
+
+.PHONY: all clean fclean re

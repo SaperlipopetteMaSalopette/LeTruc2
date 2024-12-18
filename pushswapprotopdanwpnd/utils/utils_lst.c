@@ -1,22 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   utils_lst.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/07 17:29:19 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/18 03:10:36 by thofstet         ###   ########.fr       */
+/*   Created: 2024/12/18 03:12:13 by thofstet          #+#    #+#             */
+/*   Updated: 2024/12/18 04:11:20 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../push_swap.h"
 
-t_list_libft	*ft_lstnew(int value)
+int	ps_lstsize(t_list *lst)
 {
-	t_list_libft	*new;
+	int		count;
+	t_list	*tmp;
 
-	new = (t_list_libft *)malloc(sizeof(*new));
+	count = 0;
+	tmp = lst;
+	while (tmp)
+	{
+		count++;
+		tmp = tmp->next;
+	}
+	return (count);
+}
+
+t_list	*ft_lstnew(int value)
+{
+	t_list	*new;
+
+	new = (t_list *)malloc(sizeof(*new));
 	if (!new)
 		return (NULL);
 	new->value = value;
@@ -24,5 +39,3 @@ t_list_libft	*ft_lstnew(int value)
 	new->next = NULL;
 	return (new);
 }
-
-// Creates new node and returns the pointer of it.

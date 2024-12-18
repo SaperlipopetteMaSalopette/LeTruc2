@@ -6,20 +6,19 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/03 16:04:10 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/05 17:09:14 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:10:48 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
 #include "libft.h"
 
-int	ft_lstsize(t_list *head)
+int	ft_lstsize(t_list_libft *lst)
 {
-	size_t	count;
-	t_list	*tmp;
+	int				count;
+	t_list_libft	*tmp;
 
 	count = 0;
-	tmp = head;
+	tmp = lst;
 	while (tmp)
 	{
 		count++;

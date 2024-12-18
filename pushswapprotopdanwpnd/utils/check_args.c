@@ -6,13 +6,13 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:08:06 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/15 19:42:46 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:00:43 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
-static int	ft_contains(int num, char **argv, int i)
+int	ft_contains(int num, char **argv, int i)
 {
 	i++;
 	while (argv[i])
@@ -24,7 +24,7 @@ static int	ft_contains(int num, char **argv, int i)
 	return (0);
 }
 
-static int	ft_isnum(char *num)
+int	ft_isnum(char *num)
 {
 	int	i;
 

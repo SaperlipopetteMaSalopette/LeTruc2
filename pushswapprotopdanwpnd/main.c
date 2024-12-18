@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:05:56 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/17 20:02:54 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:52:05 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	init_stack(t_list **stack, int argc, char **argv)
 
 static void	stack_sort(t_list **stack_a, t_list **stack_b)
 {
-	if (ft_lstsize(*stack_a) <= 5)
+	if (ps_lstsize(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
 	else
 		radix_sort(stack_a, stack_b);
@@ -62,13 +62,13 @@ int	main(int argc, char **argv)
 	*stack_a = NULL;
 	*stack_b = NULL;
 	init_stack(stack_a, argc, argv);
-	if (is_sorted(stack_a))
+	if (issorted(stack_a))
 	{
 		free_stack(stack_a);
 		free_stack(stack_b);
 		return (0);
 	}
-	sort_stack(stack_a, stack_b);
+	stack_sort(stack_a, stack_b);
 	free_stack(stack_a);
 	free_stack(stack_b);
 	return (0);

@@ -6,11 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:42:25 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/05 17:46:34 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:04:11 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	push(t_list **stack_to, t_list **stack_from)
 {

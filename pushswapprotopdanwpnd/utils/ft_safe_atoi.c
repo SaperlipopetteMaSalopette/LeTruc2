@@ -6,11 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 17:43:58 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/15 22:03:43 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:23:47 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	is_a_whitespace(char *str)
 {
@@ -27,7 +27,7 @@ int	is_a_whitespace(char *str)
 	return (i);
 }
 
-int	ft_safe_atoi(const char *str)
+int	ft_safe_atoi(char *str)
 {
 	long int	result;
 	int			sign;
@@ -36,7 +36,7 @@ int	ft_safe_atoi(const char *str)
 	sign = 1;
 	if (!str || !*str)
 		return (0);
-	while (is_a_whitespace(*str) == 1)
+	while (is_a_whitespace(str) == 1)
 		str++;
 	if (*str == '-' || *str == '+')
 	{

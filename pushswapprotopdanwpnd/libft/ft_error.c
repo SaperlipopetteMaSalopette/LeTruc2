@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:25:27 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/04 16:03:57 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:45:24 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,4 @@
 void	ft_error(char *msg)
 {
 	ft_putendl_fd(msg, 1);
-	return (0);
 }

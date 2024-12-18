@@ -6,11 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/05 17:46:45 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/05 18:50:10 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:04:19 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 int	rotate(t_list **stack)
 {

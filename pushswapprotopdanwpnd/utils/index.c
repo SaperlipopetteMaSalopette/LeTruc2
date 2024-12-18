@@ -6,11 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:38:42 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/17 19:59:25 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/18 03:30:27 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../push_swap.h"
 
 t_list	*get_next_min(t_list **stack)
 {
@@ -45,7 +45,7 @@ void	index_stack(t_list **stack)
 	index = 0;
 	head = get_next_min(stack);
 	if (!head)
-		return (-1);
+		ft_error("Error");
 	while (head)
 	{
 		head->index = index++;
@@ -61,10 +61,10 @@ int	get_min_index(t_list **stack, int value)
 	if (!stack || !*stack)
 		return (-1);
 	current = *stack;
-	min = stack->index;
+	min = current->index;
 	while (current)
 	{
-		if ((current->index < min) && current->index != val)
+		if ((current->index < min) && current->index != value)
 			min = current->index;
 		current = current->next;
 	}
