@@ -6,7 +6,7 @@
 #    By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/13 19:18:10 by thofstet          #+#    #+#              #
-#    Updated: 2024/12/18 03:47:28 by thofstet         ###   ########.fr        #
+#    Updated: 2024/12/19 01:47:23 by thofstet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror
 LIBFT_DIR = ./libft
 LIBFT = $(LIBFT_DIR)/libft.a
-SRCS = $(wildcard *.c src/*.c utils/*.c instruction/*.c)
+SRC_DIR = ./src
+INC_DIR = ./include
+SRCS = $(wildcard *.c src/*.c)
 OBJS = $(SRCS:.c=.o)
 LIBS = -L$(LIBFT_DIR) -lft
 
@@ -36,7 +38,6 @@ $(NAME): $(OBJS) $(LIBFT)
 clean:
 	$(RM) $(OBJS)
 	@$(MAKE) -C $(LIBFT_DIR) clean
-	@$(MAKE) -C $(PRINTF_DIR) clean
 	@echo "Clean completed."
 
 fclean: clean

@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:07:39 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/18 04:11:52 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/19 01:56:03 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,12 @@ int		issorted(t_list **stack);
 
 int		ps_lstsize(t_list *lst);
 
-t_list	*ft_lstnew(int value);
+t_list	*ps_lstnew(int value);
+
+void	ps_lstadd_front(t_list **stack, t_list *new);
+
+void	ps_lstaddback(t_list **stack, t_list *new);
+
+t_list	*ps_lstlast(t_list *lst);
 
 #endif
