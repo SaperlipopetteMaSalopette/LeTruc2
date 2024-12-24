@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 17:43:58 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/19 01:49:26 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/24 00:27:37 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ int	ft_safe_atoi(char *str)
 	}
 	if (!(*str >= '0' && *str <= '9'))
 		return (0);
-	while (*str >= '0' && *str <= 9)
+	while (*str >= '0' && *str <= '9')
 	{
-		result = result * 10 + (*str - 0);
-		if ((result * sign) > INT_MAX || (result * sign) < INT_MIN)
+		result = result * 10 + (*str - '0');
+		if ((result * sign) > 2147483647 || (result * sign) < -2147483648)
 			return (0);
 		str++;
 	}

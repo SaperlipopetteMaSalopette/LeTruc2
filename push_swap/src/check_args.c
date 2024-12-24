@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:08:06 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/19 02:25:41 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/24 00:57:47 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,10 @@ void	ft_check_args(int argc, char **argv)
 	}
 	while (arguments[i])
 	{
-		tmp = ft_safe_atoi(arguments[i]);
 		if (!ft_isnum(arguments[i]))
 			ft_error("Error1");
-		if (ft_contains(tmp, arguments, i) == 0)
+		tmp = ft_safe_atoi(arguments[i]);
+		if (ft_contains(tmp, arguments, i) == 1)
 			ft_error("Error2");
 		if (tmp < -2147483648 || tmp > 2147483647)
 			ft_error("Error3");

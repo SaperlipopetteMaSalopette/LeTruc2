@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:05:56 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/19 01:49:32 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/24 00:20:56 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	init_stack(t_list **stack, int argc, char **argv)
 	int		i;
 
 	i = 0;
+	arguments = 0;
 	if (argc < 2)
 		ft_error("No values entered bro");
 	else if (argc == 2)
@@ -57,7 +58,7 @@ int	main(int argc, char **argv)
 	ft_check_args(argc, argv);
 	stack_a = (t_list **)malloc(sizeof(t_list));
 	stack_b = (t_list **)malloc(sizeof(t_list));
-	if (!stack_a || !*stack_a)
+	if (!stack_a || !stack_b)
 		ft_error("Error, no stack_a");
 	*stack_a = NULL;
 	*stack_b = NULL;
