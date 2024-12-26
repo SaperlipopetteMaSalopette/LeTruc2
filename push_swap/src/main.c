@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:05:56 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/24 00:20:56 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/26 20:58:36 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	stack_sort(t_list **stack_a, t_list **stack_b)
 {
 	if (ps_lstsize(*stack_a) <= 5)
 		simple_sort(stack_a, stack_b);
+	else if (ps_lstsize(*stack_a) > 5)
+		radix_sort(stack_a);
 	else
 		ft_error("prout");
 }

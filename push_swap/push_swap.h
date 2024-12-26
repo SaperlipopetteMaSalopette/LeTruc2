@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:07:39 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/19 01:56:03 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/26 20:45:47 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,5 +98,13 @@ void	ps_lstadd_front(t_list **stack, t_list *new);
 void	ps_lstaddback(t_list **stack, t_list *new);
 
 t_list	*ps_lstlast(t_list *lst);
+
+void	radix_sort(t_list **stack_a, t_list **stack_b, int totalnums);
+
+void	process_bits(t_list **a, t_list **b, int bits, int totalnums);
+
+int		count_bits(int totalnums);
+
+void	put_index(t_list **stack_a, int totalnums);
 
 #endif

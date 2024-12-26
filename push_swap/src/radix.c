@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:08:45 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/25 18:43:22 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/26 20:44:36 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ void	put_index(t_list **stack_a, int totalnums)
 	t_list	*compare;
 	int		index;
 
-	current = stack_a;
+	current = *stack_a;
+	index = 0;
+	if (!stack_a || !*stack_a)
+		ft_error("erreur put_index");
 	while (current)
 	{
-		index = 0;
-		compare = stack_a;
 		while (compare)
 		{
 			if (compare->value < current->value)
@@ -30,7 +31,7 @@ void	put_index(t_list **stack_a, int totalnums)
 			compare = compare->next;
 		}
 		current->index = index;
-		current = current->index;
+		current = current->next;
 	}
 }
 
@@ -44,7 +45,7 @@ int	count_bits(int totalnums)
 	return (bits);
 }
 
-void	process_bits(t_list **a, t_list **b, int bits int totalnums)
+void	process_bits(t_list **a, t_list **b, int bits, int totalnums)
 {
 	int	i;
 

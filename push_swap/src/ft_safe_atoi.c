@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 17:43:58 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/24 00:27:37 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/26 19:52:51 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	is_a_whitespace(char *str)
 	i = 0;
 	while (*str)
 	{
-		if (*str == ' ' || *str == '\t' || *str == '\n'
+		while (*str == ' ' || *str == '\t' || *str == '\n'
 			|| *str == '\v' || *str == '\f' || *str == '\r')
 			i = 1;
 		str++;
