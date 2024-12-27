@@ -6,34 +6,11 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 21:08:45 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/26 20:44:36 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/27 00:42:38 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
-void	put_index(t_list **stack_a, int totalnums)
-{
-	t_list	*current;
-	t_list	*compare;
-	int		index;
-
-	current = *stack_a;
-	index = 0;
-	if (!stack_a || !*stack_a)
-		ft_error("erreur put_index");
-	while (current)
-	{
-		while (compare)
-		{
-			if (compare->value < current->value)
-				index++;
-			compare = compare->next;
-		}
-		current->index = index;
-		current = current->next;
-	}
-}
 
 int	count_bits(int totalnums)
 {
@@ -52,14 +29,14 @@ void	process_bits(t_list **a, t_list **b, int bits, int totalnums)
 	i = 0;
 	while (i < totalnums)
 	{
-		if (((*stack_a)->index >> bits) & 1)
-			ra(stack_a);
+		if (((*a)->index >> bits) & 1)
+			ra(a);
 		else
-			pb(stack_a, stack_b);
+			pb(a, b);
 		i++;
 	}
-	while (*stack_b)
-		pa(stack_a, stack_b);
+	while (*b)
+		pa(a, b);
 }
 
 void	radix_sort(t_list **stack_a, t_list **stack_b, int totalnums)
@@ -74,4 +51,6 @@ void	radix_sort(t_list **stack_a, t_list **stack_b, int totalnums)
 		process_bits(stack_a, stack_b, bit, totalnums);
 		bit++;
 	}
+	if (bit > max_bits)
+		ft_putendl_fd("zizicaca", 1);
 }

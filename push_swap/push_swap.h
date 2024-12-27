@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 19:07:39 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/26 20:45:47 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/27 03:50:33 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define INT_MIN -2147483648
 
 # include "libft/libft.h"
+# include <stdio.h>
 
 typedef struct t_list
 {
@@ -105,6 +106,8 @@ void	process_bits(t_list **a, t_list **b, int bits, int totalnums);
 
 int		count_bits(int totalnums);
 
-void	put_index(t_list **stack_a, int totalnums);
+void	initialize_index(t_list **stack);
+
+void	debug_indices(t_list *stack);
 
 #endif

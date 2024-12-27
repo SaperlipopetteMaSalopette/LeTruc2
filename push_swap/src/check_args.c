@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/27 20:08:06 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/24 00:57:47 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/27 03:39:22 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int	ft_contains(int num, char **argv, int i)
 {
-	i++;
-	while (argv[i])
+	int	index;
+
+	index = i + 1;
+	while (argv[index])
 	{
-		if (ft_safe_atoi(argv[i]) == num)
+		if (ft_safe_atoi(argv[index]) == num)
 			return (1);
-		i++;
+		index++;
 	}
 	return (0);
 }
@@ -50,17 +52,14 @@ void	ft_check_args(int argc, char **argv)
 	if (argc == 2)
 		arguments = ft_split(argv[1], ' ');
 	else
-	{
-		i = 1;
-		arguments = argv;
-	}
+		arguments = &argv[1];
 	while (arguments[i])
 	{
 		if (!ft_isnum(arguments[i]))
 			ft_error("Error1");
 		tmp = ft_safe_atoi(arguments[i]);
 		if (ft_contains(tmp, arguments, i) == 1)
-			ft_error("Error2");
+			ft_error("Error, value is present twice");
 		if (tmp < -2147483648 || tmp > 2147483647)
 			ft_error("Error3");
 		i++;

@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 17:38:42 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/19 01:49:29 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/27 03:49:52 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,9 +46,11 @@ void	index_stack(t_list **stack)
 	head = get_next_min(stack);
 	if (!head)
 		ft_error("Error");
+	initialize_index(stack);
 	while (head)
 	{
 		head->index = index++;
+		debug_indices(*stack);
 		head = get_next_min(stack);
 	}
 }
@@ -69,4 +71,18 @@ int	get_min_index(t_list **stack, int value)
 		current = current->next;
 	}
 	return (min);
+}
+
+void	initialize_index(t_list **stack)
+{
+	t_list	*current;
+
+	current = *stack;
+	if (!stack || !*stack)
+		ft_error("No stack in index init");
+	while (current)
+	{
+		current->index = -1;
+		current = current->next;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: thofstet <thofstet@student.42lausanne.c    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/18 03:12:13 by thofstet          #+#    #+#             */
-/*   Updated: 2024/12/19 02:01:00 by thofstet         ###   ########.fr       */
+/*   Updated: 2024/12/26 23:52:43 by thofstet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,9 @@ t_list	*ps_lstlast(t_list *lst)
 	t_list	*tmp;
 
 	tmp = lst;
+	if (!lst)
+		return (NULL);
 	while (tmp->next)
-	{
 		tmp = tmp->next;
-		if (tmp->next == NULL)
-			return (tmp);
-	}
 	return (tmp);
 }
